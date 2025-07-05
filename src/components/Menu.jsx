@@ -9,8 +9,33 @@ import gsap from 'gsap';
 const Menu = () => {
         const contentRef = useRef();
       const [currentIndex, setCurrentIndex] = useState(0);
-
+        
       useGSAP(()=>{
+
+  gsap.to('#m-left-leaf', {
+    y: -50,
+    ease: 'power1.inOut',
+    scrollTrigger: {
+      trigger: '#menu',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true,
+      
+    }
+  });
+
+  gsap.to('#m-right-leaf', {
+    y: -50,
+    ease: 'power1.inOut',
+    scrollTrigger: {
+      trigger: '#menu',
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true,
+    }
+  })
+
+
         gsap.fromTo('#title',{opacity:0}, {opacity:1, duration:1});
         gsap.fromTo('.cocktail img',{opacity:0,xPercent:-100},{
             xPercent:0,opacity:1,duration:1,ease:'power1.inOut'
@@ -23,7 +48,7 @@ const Menu = () => {
 
             
         })
-      },[currentIndex]);
+         },[currentIndex]);
 
       const totalCocktails = allCocktails.length;
 
